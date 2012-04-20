@@ -1,0 +1,22 @@
+This test is using the JSON content from .FitNesse.UserGuide.RestfulPackets.
+
+| Library |
+| restful service fixture |
+
+!| script |
+| http get request | http://localhost:${FITNESSE_PORT}/FitNesse.UserGuide.RestfulPackets?packet |
+| check | status code | 200 |
+| check | content type | text/html; charset=utf-8 |
+| check | header | Content-Type | text/html; charset=utf-8 |
+| show | content |
+
+!**> scenarios
+| scenario | customer has | property | property | value |
+| check | path | tables[0].Customer.@property | @value |
+*!
+| customer has property |
+| property | value |
+| addr.city | Anyville |
+| id | 8402 |
+| name | Bob Someone |
+
