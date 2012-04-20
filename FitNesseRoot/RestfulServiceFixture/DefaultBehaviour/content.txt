@@ -1,0 +1,9 @@
+This test is using the JSON content from .FitNesse.UserGuide.RestfulPackets.
+
+!| script | restful service fixture |
+| http get request | http://localhost:${FITNESSE_PORT}/FitNesse.UserGuide.RestfulPackets?packet |
+| check | status code | 200 |
+| check | content type | text/html; charset=utf-8 |
+| check | header | Content-Type | text/html; charset=utf-8 |
+| show | content |
+| check | path | tables[0].Customer.addr.city | Anyville |

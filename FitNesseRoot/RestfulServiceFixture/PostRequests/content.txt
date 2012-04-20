@@ -1,0 +1,7 @@
+| script | restful service fixture |
+| set post parameters |!{searchString:Restful,searchType:Search Titles!}|
+| http post request | !-http://localhost:-!${FITNESSE_PORT}!-/FrontPage?search-! |
+| check | status code | 200 |
+| check | content type | text/html; charset=utf-8 |
+| show | content |
+| ensure | content contains | !-RestfulServiceFixture-! |

@@ -1,0 +1,11 @@
+This page contains the acceptance tests for the restful service fixture. The tests use FitNesse data as a reference.
+
+!contents -g -h
+
+
+!**> Variables
+
+!define TEST_SYSTEM {slim}
+
+!pomFile pom.xml@runtime
+*!
