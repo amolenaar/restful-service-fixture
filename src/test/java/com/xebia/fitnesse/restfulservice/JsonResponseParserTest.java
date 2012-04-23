@@ -57,4 +57,13 @@ public class JsonResponseParserTest {
 		assertNull(parser.getValue("foo[2]"));
 	}
 
+	@Test
+	public void testMultipleItemsFromList() {
+		String json = "{ \"foo\": [ \"bar\", \"baz\" ] }";
+		
+		JsonResponseParser parser = new JsonResponseParser();
+		parser.parse(json);
+		assertEquals("[\"bar\",\"baz\"]", parser.getValue("foo"));
+	}
+
 }

@@ -17,26 +17,26 @@ import org.apache.http.message.BasicHttpResponse;
 import org.junit.Before;
 import org.junit.Test;
 
-public class RestfulServiceFixtureTest {
+public class WebServiceFixtureTest {
 
-	private RestfulServiceFixture service;
+	private WebServiceFixture service;
 	private HttpClient httpClient;
 
 	@Before
 	public void setUp() {
-		service = new RestfulServiceFixture();
+		service = new WebServiceFixture();
 		httpClient = mock(HttpClient.class);
 		service.setHttpClient(httpClient);
 	}
 	
 	@Test(expected=AssertionError.class)
 	public void testStatusCodeWithoutRequest() {
-		new RestfulServiceFixture().statusCode();
+		new WebServiceFixture().statusCode();
 	}
 	
 	@Test(expected=AssertionError.class)
 	public void testContentTypeHeaderWithoutRequest() {
-		new RestfulServiceFixture().contentType();
+		new WebServiceFixture().contentType();
 	}
 	
 	@Test

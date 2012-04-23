@@ -23,7 +23,7 @@ import org.apache.http.util.EntityUtils;
 /**
  * Base Fixture class.
  */
-public class RestfulServiceFixture {
+public class WebServiceFixture {
 
 	private HttpClient httpClient;
 	private HttpEntity entity;
@@ -32,9 +32,17 @@ public class RestfulServiceFixture {
 	private ResponseParser responseParser;
 	private String content;
 	
-	public RestfulServiceFixture() {
+	public WebServiceFixture() {
 		httpClient = new DefaultHttpClient();
-		responseParser = new JsonResponseParser();
+		expectOutput("json");
+	}
+	
+	public void expectOutput(String format) {
+		if ("json".equalsIgnoreCase(format)) {
+			responseParser = new JsonResponseParser();
+		} else if ("xml".equalsIgnoreCase(format)) {
+			responseParser = new XmlResponseParser();
+		}
 	}
 	
 	public void httpGetRequest(String url) throws ClientProtocolException, IOException {
@@ -109,5 +117,23 @@ public class RestfulServiceFixture {
 	// For testing
 	void setHttpClient(HttpClient httpClient) {
 		this.httpClient = httpClient;
+	}
+	
+	/**
+	 * 'Namespaced' version of {@link #content()}.
+	 * 
+	 * @return
+	 */
+	public String webContent() {
+		return content;
+	}
+	
+	/**
+	 * 'Namespaced' version of {@link #path()}.
+	 * 
+	 * @return
+	 */
+	public String webPath(String path) {
+		return path(path);
 	}
 }
