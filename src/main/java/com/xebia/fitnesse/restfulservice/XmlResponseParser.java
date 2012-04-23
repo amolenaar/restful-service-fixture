@@ -1,6 +1,7 @@
 package com.xebia.fitnesse.restfulservice;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,25 +21,28 @@ import org.w3c.dom.NodeList;
 public class XmlResponseParser implements ResponseParser {
 
 	DocumentBuilderFactory documentBuilderFactory;
-    private XPathFactory xpathFactory	;
+    private XPathFactory xpathFactory;
     
 	private Document document;
 
 	public XmlResponseParser() {
 		documentBuilderFactory = DocumentBuilderFactory.newInstance();
-		documentBuilderFactory.setNamespaceAware(true); // never forget this!
+		// Not namespace aware by default. This simplifies stuff,
+		// but can break complex xml
+		documentBuilderFactory.setNamespaceAware(false);
 		xpathFactory = XPathFactory.newInstance();
 	}
 	
-	// TODO: do same for file.
 	@Override
-	public void parse(String content) {
-		try {
-			DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
-			document = builder.parse(new ByteArrayInputStream(content.getBytes("UTF-8")));
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
+	public void parse(String content) throws Exception {
+		DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
+		document = builder.parse(new ByteArrayInputStream(content.getBytes("UTF-8")));
+	}
+
+	@Override
+	public void parse(File file) throws Exception {
+		DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
+		document = builder.parse(file);
 	}
 
 	@Override

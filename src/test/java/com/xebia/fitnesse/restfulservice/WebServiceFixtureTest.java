@@ -40,7 +40,7 @@ public class WebServiceFixtureTest {
 	}
 	
 	@Test
-	public void canSendSimpleGetRequest() throws ClientProtocolException, IOException {
+	public void canSendSimpleGetRequest() throws Exception {
 		BasicHttpResponse response = new BasicHttpResponse(HttpVersion.HTTP_1_1, HttpStatus.SC_OK, "OK");
 		response.setEntity(new StringEntity("{ \"foo\": \"bar\" }"));
 		stub(httpClient.execute(any(HttpGet.class))).toReturn(response);

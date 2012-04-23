@@ -19,6 +19,8 @@
 package com.xebia.fitnesse.restfulservice;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 class FitNesseUtil {
 
@@ -54,23 +56,24 @@ class FitNesseUtil {
 		
 		return new File(fileName);
 	}
-
 	
-	/**
-	 * Construct a <code>String</code> representation of a <code>String[]</code> the same way Selenium IDE does.
-	 */
-	public static String stringArrayToString(String[] stringArray) {
-		StringBuilder b = new StringBuilder(64);
-		boolean comma = false;
-		for (String s: stringArray) {
-			if (comma) {
-				b.append(',');
-			} else {
-				comma = true;
-			}
-			b.append(s.replace("\\", "\\\\").replace(",", "\\,"));
+	public static String readFile(File file) throws IOException {
+		FileReader reader = new FileReader(file);
+		char buf[] = new char[512];
+		StringBuilder builder = new StringBuilder(512);
+		
+		try {
+			int charsRead;
+			do {
+				charsRead = reader.read(buf);
+				if (charsRead > 0) {
+					builder.append(buf, 0, charsRead);
+				}
+			} while (charsRead > 0);
+		} finally {
+			reader.close();
 		}
-		return b.toString();
+		return builder.toString();
 	}
-	
+
 }

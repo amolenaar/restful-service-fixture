@@ -1,5 +1,8 @@
 package com.xebia.fitnesse.restfulservice;
 
+import java.io.File;
+import java.io.IOException;
+
 import com.jayway.jsonpath.InvalidPathException;
 import com.jayway.jsonpath.JsonPath;
 
@@ -21,6 +24,11 @@ public class JsonResponseParser implements ResponseParser {
 			System.err.println(e.getMessage());
 			return null;
 		}
+	}
+
+	@Override
+	public void parse(File file) throws IOException {
+		parse(FitNesseUtil.readFile(file));
 	}
 
 }

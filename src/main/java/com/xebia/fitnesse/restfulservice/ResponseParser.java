@@ -1,8 +1,12 @@
 package com.xebia.fitnesse.restfulservice;
 
+import java.io.File;
+
 public interface ResponseParser {
 
-	public void parse(String content);
+	void parse(String content) throws Exception;
+
+	void parse(File file) throws Exception;
 	
-	public String getValue(String path);
+	String getValue(String path);
 }

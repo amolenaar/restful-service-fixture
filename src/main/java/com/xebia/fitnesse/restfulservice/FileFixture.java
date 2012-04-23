@@ -4,7 +4,6 @@ import static com.xebia.fitnesse.restfulservice.FitNesseUtil.asFile;
 
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 
 public class FileFixture {
 
@@ -23,13 +22,13 @@ public class FileFixture {
 		}
 	}
 
-	public void readFile(String filename) throws IOException {
+	public void readFile(String filename) throws Exception {
 		File file = asFile(filename);
 		
 		readFile(file);
 	}
 
-	void readFile(File file) throws IOException {
+	void readFile(File file) throws Exception {
 		FileReader reader = new FileReader(file);
 		char buf[] = new char[512];
 		StringBuilder builder = new StringBuilder(512);

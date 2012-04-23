@@ -45,7 +45,7 @@ public class WebServiceFixture {
 		}
 	}
 	
-	public void httpGetRequest(String url) throws ClientProtocolException, IOException {
+	public void httpGetRequest(String url) throws Exception {
 		HttpGet httpGet = new HttpGet(url);
 		executeRequest(httpGet);
 	}
@@ -65,14 +65,13 @@ public class WebServiceFixture {
 		entity = new UrlEncodedFormEntity(pairs);
 	}
 	
-	public void httpPostRequest(String url) throws ClientProtocolException, IOException {
+	public void httpPostRequest(String url) throws Exception {
 		HttpPost httpPost = new HttpPost(url);
 		httpPost.setEntity(entity);
 		executeRequest(httpPost);
 	}
 
-	private void executeRequest(HttpUriRequest request) throws IOException,
-			ClientProtocolException {
+	private void executeRequest(HttpUriRequest request) throws Exception {
 		response = httpClient.execute(request);
 		content = EntityUtils.toString(response.getEntity());
 		System.out.println("content: " + content);
