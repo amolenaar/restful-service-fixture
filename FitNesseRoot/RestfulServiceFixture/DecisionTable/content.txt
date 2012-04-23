@@ -1,7 +1,7 @@
 This test is using the JSON content from .FitNesse.UserGuide.RestfulPackets.
 
 | Library |
-| restful service fixture |
+| web service fixture |
 
 !| script |
 | http get request | http://localhost:${FITNESSE_PORT}/FitNesse.UserGuide.RestfulPackets?packet |
