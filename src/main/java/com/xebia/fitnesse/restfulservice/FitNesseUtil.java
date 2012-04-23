@@ -32,14 +32,14 @@ class FitNesseUtil {
 	 * scriptName is something like
 	 * '<a href="http://some.url/files/selenium/Suite">http://files/selenium/Suite</a>'.
 	 * 
-	 * @param scriptName
+	 * @param url
 	 * @return
 	 */
-	public static String removeAnchorTag(String scriptName) {
-		if (scriptName.startsWith("<a") && scriptName.endsWith("</a>")) {
-			scriptName = scriptName.split(">", 2)[1].split("<", 2)[0];
+	public static String removeAnchorTag(String url) {
+		if (url.startsWith("<a") && url.endsWith("</a>")) {
+			url = url.split(">", 2)[1].split("<", 2)[0];
 		}
-		return scriptName;
+		return url;
 	}
 	
 	

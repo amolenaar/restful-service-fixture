@@ -60,6 +60,15 @@ public class FileFixture {
 	}
 	
 	/**
+	 * 'Namespaced' version of {@link #expectOutput(String)}.
+	 * 
+	 * @return
+	 */
+	public void fileExpectOutput(String format) {
+		expectOutput(format);
+	}
+	
+	/**
 	 * 'Namespaced' version of {@link #content()}.
 	 * 
 	 * @return

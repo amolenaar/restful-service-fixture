@@ -46,7 +46,7 @@ public class WebServiceFixture {
 	}
 	
 	public void httpGetRequest(String url) throws Exception {
-		HttpGet httpGet = new HttpGet(url);
+		HttpGet httpGet = new HttpGet(FitNesseUtil.removeAnchorTag(url));
 		executeRequest(httpGet);
 	}
 
@@ -66,7 +66,7 @@ public class WebServiceFixture {
 	}
 	
 	public void httpPostRequest(String url) throws Exception {
-		HttpPost httpPost = new HttpPost(url);
+		HttpPost httpPost = new HttpPost(FitNesseUtil.removeAnchorTag(url));
 		httpPost.setEntity(entity);
 		executeRequest(httpPost);
 	}
@@ -116,6 +116,15 @@ public class WebServiceFixture {
 	// For testing
 	void setHttpClient(HttpClient httpClient) {
 		this.httpClient = httpClient;
+	}
+	
+	/**
+	 * 'Namespaced' version of {@link #expectOutput(String)}.
+	 * 
+	 * @return
+	 */
+	public void webExpectOutput(String format) {
+		expectOutput(format);
 	}
 	
 	/**

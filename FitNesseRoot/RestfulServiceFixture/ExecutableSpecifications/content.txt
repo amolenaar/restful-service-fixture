@@ -1,0 +1,22 @@
+!**> set up
+| Library |
+| file fixture |
+| web service fixture |
+| matching helper |
+
+| Script |
+| file expect | xml | output |
+| web expect | json | output |
+| read file | http://files/customer.xml |
+| http get request | http://localhost:${FITNESSE_PORT}/FitNesse.UserGuide.RestfulPackets?packet |
+| check | status code | 200 |
+
+| Scenario | mapping xml | xml | to json | json | and match | matcher |
+| $XML= | file path | @xml/text() |
+| $JSON= | web path | @json |
+| ensure | match | $XML | @matcher | $JSON |
+*!
+
+| mapping xml to json and match |
+| xml | json | matcher |
+| /customer/address/street | !-tables[0].Customer.addr.Street-! | equals |
