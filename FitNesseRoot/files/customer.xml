@@ -1,0 +1,7 @@
+<customer>
+	<address>
+		<street>555 Witherspoon st.</street>
+		<city>Anyville</city>
+		<state>IL</state>
+	</address>
+</customer>
