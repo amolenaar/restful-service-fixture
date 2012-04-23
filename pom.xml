@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.xebia.fitnesse</groupId>
   <artifactId>restful-service-fixture</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0-SNAPSHOT</version>
   <name>RESTful service fixture</name>
   <description>The simple way to test your RESTful JSON services</description>
 
