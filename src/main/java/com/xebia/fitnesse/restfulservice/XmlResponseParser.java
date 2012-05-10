@@ -21,7 +21,7 @@ import org.w3c.dom.NodeList;
 public class XmlResponseParser implements ResponseParser {
 
 	DocumentBuilderFactory documentBuilderFactory;
-    private XPathFactory xpathFactory;
+    private final XPathFactory xpathFactory;
     
 	private Document document;
 
@@ -34,19 +34,19 @@ public class XmlResponseParser implements ResponseParser {
 	}
 	
 	@Override
-	public void parse(String content) throws Exception {
+	public void parse(final String content) throws Exception {
 		DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
 		document = builder.parse(new ByteArrayInputStream(content.getBytes("UTF-8")));
 	}
 
 	@Override
-	public void parse(File file) throws Exception {
+	public void parse(final File file) throws Exception {
 		DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
 		document = builder.parse(file);
 	}
 
 	@Override
-	public String getValue(String path) {
+	public String getValue(final String path) {
 	    XPath xpath = xpathFactory.newXPath();
 	    NodeList nodes;
 		try {
@@ -69,5 +69,16 @@ public class XmlResponseParser implements ResponseParser {
 		    return JSONArray.toJSONString(vals);
 		}
 	}
+
+    @Override
+    public Object getCount(final String path) {
+        // TODO Auto-generated method stub
+        throw new RuntimeException("getCount not implemented");
+    }
+
+    @Override
+    public String acceptedMimeType() {
+        return "text/xml, application/xml";
+    }
 
 }

@@ -9,4 +9,8 @@ public interface ResponseParser {
 	void parse(File file) throws Exception;
 	
 	String getValue(String path);
+	
+	String acceptedMimeType();
+
+    Object getCount(String path);
 }
