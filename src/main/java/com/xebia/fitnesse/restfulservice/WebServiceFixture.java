@@ -64,6 +64,12 @@ public class WebServiceFixture {
 		addDefaultHeaders(request);
 		executeRequest(request);
 	}
+	
+	public void httpDeleteRequest(final String url) throws Exception {
+        HttpDelete request = new HttpDelete(FitNesseUtil.removeAnchorTag(url));
+        addDefaultHeaders(request);
+        executeRequest(request);
+    }
 
     private void addDefaultHeaders(final HttpMessage httpMessage) {
         httpMessage.setHeader("Accept", responseParser.acceptedMimeType());
