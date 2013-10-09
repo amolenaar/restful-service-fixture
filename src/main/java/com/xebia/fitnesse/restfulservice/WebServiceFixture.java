@@ -99,8 +99,10 @@ public class WebServiceFixture {
 
 	private void executeRequest(final HttpUriRequest request) throws Exception {
 		response = httpClient.execute(request, localContext);
-		content = EntityUtils.toString(response.getEntity());
-		responseParser.parse(content);
+		if (response.getEntity() != null) {
+            content = EntityUtils.toString(response.getEntity());
+            responseParser.parse(content);
+        }
 	}
 
 	public int statusCode() {
