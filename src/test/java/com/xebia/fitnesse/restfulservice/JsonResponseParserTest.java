@@ -74,7 +74,7 @@ public class JsonResponseParserTest {
 		
 		JsonResponseParser parser = new JsonResponseParser();
 		parser.parse(json);
-		assertEquals("baz", parser.getValue("foo[1].field"));
+		assertEquals("baz beer", parser.getValue("foo[1].field"));
 		assertEquals(1, parser.getCount("$.foo[?(@.field == bar)]"));
 		assertEquals(1, parser.getCount("$.foo[?(@.field == baz beer)]"));
 	}
