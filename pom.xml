@@ -7,7 +7,7 @@
   <description>The simple way to test your RESTful JSON services</description>
 
   <properties>
-    <fitnesse.version>20111025</fitnesse.version>
+    <fitnesse.version>20131110</fitnesse.version>
     <fitnesse.port>8000</fitnesse.port>
     <fitnesse.expiration>0</fitnesse.expiration>
     <slf4j.version>1.6.2</slf4j.version>
