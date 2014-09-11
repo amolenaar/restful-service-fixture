@@ -64,6 +64,12 @@ public class WebServiceFixture {
 		addDefaultHeaders(request);
 		executeRequest(request);
 	}
+	
+	public void httpDeleteRequest(final String url) throws Exception {
+        	HttpDelete request = new HttpDelete(FitNesseUtil.removeAnchorTag(url));
+        	addDefaultHeaders(request);
+        	executeRequest(request);
+    	}
 
     private void addDefaultHeaders(final HttpMessage httpMessage) {
         httpMessage.setHeader("Accept", responseParser.acceptedMimeType());
@@ -93,8 +99,10 @@ public class WebServiceFixture {
 
 	private void executeRequest(final HttpUriRequest request) throws Exception {
 		response = httpClient.execute(request, localContext);
-		content = EntityUtils.toString(response.getEntity());
-		responseParser.parse(content);
+		if (response.getEntity() != null) {
+            content = EntityUtils.toString(response.getEntity());
+            responseParser.parse(content);
+        }
 	}
 
 	public int statusCode() {
